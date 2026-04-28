@@ -10,9 +10,12 @@ RUN : \
         wget \
         bison \
         flex \
-        libssl-dev \
         make \
         libc6-dev \
+        libssl-dev \
+        cpio \
+        unzip \
+        rsync \
         libncurses5-dev \
         build-essential \
         crossbuild-essential-arm64 \
@@ -48,6 +51,9 @@ RUN : \
     && cp -r board/raspberrypi board/raspberrypi4-64 \
     && cp -a /tmp/board/. ./board \
     && rm -rf /tmp/board \
-    && make raspberrypi4_64_defconfig
+    && make raspberrypi4_64_defconfig \
+    && make myboard_defconfig \
+    && sed -i '$s/$/ quiet loglevel=3/' board/raspberrypi4-64/cmdline.txt \
+    && make
 
 CMD [ "/bin/bash" ]
