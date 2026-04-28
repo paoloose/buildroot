@@ -51,9 +51,9 @@ RUN : \
     && cp -r board/raspberrypi board/raspberrypi4-64 \
     && cp -a /tmp/board/. ./board \
     && rm -rf /tmp/board \
+    && make distclean \
     && make raspberrypi4_64_defconfig \
     && make myboard_defconfig \
-    && sed -i '$s/$/ quiet loglevel=3/' board/raspberrypi4-64/cmdline.txt \
-    && make
+    && sed -i '$s/$/ quiet loglevel=3/' board/raspberrypi4-64/cmdline.txt
 
 CMD [ "/bin/bash" ]
