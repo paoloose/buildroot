@@ -30,3 +30,4 @@ arm_64bit=1
 # enable i2c
 dtparam=i2c1=on
 dtoverlay=w1-gpio
+disable_splash=1
