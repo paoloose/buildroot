@@ -34,14 +34,13 @@ USER buildroot
 WORKDIR /home/buildroot/
 
 RUN : \
-    && wget https://buildroot.org/downloads/buildroot-2026.02.1.tar.gz \
-    && tar xf ./buildroot-2026.02.1.tar.gz \
-    && rm -rf ./buildroot-2026.02.1.tar.gz
-
+    && wget https://buildroot.org/downloads/buildroot-2025.02.tar.gz \
+    && tar xf ./buildroot-2025.02.tar.gz \
+    && rm -rf ./buildroot-2025.02.tar.gz
 
 COPY --chown=1000:1000 .config/micro .config/micro
 
-WORKDIR /home/buildroot/buildroot-2026.02.1
+WORKDIR /home/buildroot/buildroot-2025.02
 
 COPY --chown=1000:1000 myboard_defconfig configs/myboard_defconfig
 COPY --chown=1000:1000 board/ /tmp/board/
