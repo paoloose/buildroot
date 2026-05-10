@@ -44,10 +44,13 @@ WORKDIR /home/buildroot/buildroot-2025.02
 
 COPY --chown=1000:1000 myboard_defconfig configs/myboard_defconfig
 COPY --chown=1000:1000 board/ /tmp/board/
+COPY --chown=1000:1000 package/ /tmp/package/
 
 RUN : \
     && rm board/raspberrypi4-64 \
     && cp -r board/raspberrypi board/raspberrypi4-64 \
+    && cp -a /tmp/package/. ./package \
+    && rm -rf /tmp/package \
     && cp -a /tmp/board/. ./board \
     && rm -rf /tmp/board \
     && make distclean \
